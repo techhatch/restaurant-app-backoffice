@@ -50,7 +50,7 @@
 	padding-left: .6rem;
 }
 .sidebar a span:last-child:hover{
-	color: var(--main-color);
+	color: #00abff;
 }
 #sidebar-toggle:checked ~ .sidebar{
 	width: 60px;
