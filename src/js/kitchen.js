@@ -1,5 +1,5 @@
 import App from "./App.js";
-import { createRow, updateRow, deleteRow } from "./Util.js";
+import { createRow, updateRow, deleteRow,convertToLocalDateTime } from "./Util.js";
 
 var kitchenLoad = (function() {
     // const form = document.getElementById('custReg');
@@ -40,38 +40,5 @@ var kitchenLoad = (function() {
         return false;
     });
 });
-function convertToLocalDateTime(datee)
-{
-    // var offset = new Date().getTimezoneOffset();
-    // var tempDate = new Date(strDateTime);
-    // // var date = new Date(tempDate.getTime()-(offset*60000));
-    // var date = new Date(tempDate.getTime());
-    var year = datee.getFullYear();
-    var month = datee.getMonth()+1;
-    var day = datee.getDate();
-    var hour = datee.getHours();
-    var minute = datee.getMinutes();
-    
-    if(minute<10)
-        minute = "0"+minute;
 
-    if(hour<10)
-        hour = "0"+hour;
-
-    if(day<10)
-        day = "0"+day;
-
-    if(month<10)
-        month = "0"+month;
-    
-    var time = "";
-    
-    if(datee)
-    {
-        time = hour+":"+minute;   
-        datee=  year+"-"+month+"-"+day;
-    }
-    
-    return datee +" @ " + time;
-}
 export default kitchenLoad;
