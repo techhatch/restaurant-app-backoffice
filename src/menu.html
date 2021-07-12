@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant App</title>
+</head>
+<body>
+   
+  <div class="header">
+    <form novalidate id="menuForm">
+      
+      <div class="control-grp">
+            <label><strong>Menu Name</strong></label>
+            <input type="text" name="name" id="name" />
+        </div>
+        <div class="control-grp">
+            <label><strong>Category</strong></label>
+            <input type="text" name="category" id="category" />
+        </div>
+        <div class="control-grp">
+            <label><strong>Price</strong></label>
+            <input type="number" name="price" id="price" />
+        </div>
+        <input type="text" style="display:none" name="id" id="id"  />  
+        <div class="control-grp">
+            <input type="submit" class="btn" value="Save" />
+        </div>
+    </form>
+  </div>
+  
+  <table class="table-list" id="menuTable">
+    <thead>
+    <tr>
+      <th>Menu Item</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  
+  <template id="menuRow">
+    <tr>
+        <td data-id="name"></td>
+        <td class="text-center" data-id="category"></td>
+        <td class="text-center" data-id="price"></td>
+        <td class="text-center"><a href="#" class="editmenu action">Edit</a><a href="#" class="delmenu action">Delete</a></td>
+    </tr>
+  </template>
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+    <!-- App scripts -->
+    <!-- <script src="js/menus.js" type="module"></script> -->
+
+     <!-- main.js  -->
+    <script src="js/menus.js" type="module"></script> 
+</body>
+</html>
