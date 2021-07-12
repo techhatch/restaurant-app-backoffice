@@ -65,9 +65,9 @@ export function editMenu(selector){
 }
 
 // delete menu
- export function deleteMenu(selector){
+export function deleteMenu(selector){
     const db = App.getdb('Menu');
-            let tr = selector.parentElement.parentElement;
-            if(db.remove(tr.dataset.id))
-                tr.remove();
+    let tr = selector.parentElement.parentElement;
+    if(db.remove(tr.dataset.id))
+        tr.remove();
 }

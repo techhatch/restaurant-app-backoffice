@@ -13,13 +13,16 @@ export function createRow(selector, id, data) {
         const propertyNames = Object.keys(data);
         propertyNames.forEach((element, index) => {
             const col = td[index];
-            col.textContent = data[col.dataset.id];
+            if(index == 3 && selector == "#kitchenRow")
+                col.getElementsByTagName("select")[0].value = data[col.dataset.id];
+            else
+                col.textContent = data[col.dataset.id];
         });
 
         tbody.appendChild(clone);
     }
 }
-export function updateRow(id, data) {
+export function updateRow(id, data,selector=null) {
 
     // Instantiate the table with the existing HTML tbody
     // and the row with the template
@@ -30,7 +33,11 @@ export function updateRow(id, data) {
         const propertyNames = Object.keys(data);
         propertyNames.forEach((element, index) => {
             const col = td[index];
-            col.textContent = data[col.dataset.id];
+            if(selector && selector == "#kitchenRow" && index == 3 )
+                col.getElementsByTagName("select")[0].value = data[col.dataset.id];
+            else
+                col.textContent = data[col.dataset.id];
+           
         });
 
     }
