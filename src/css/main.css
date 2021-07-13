@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  
+.table-list {
+	width: 100%;
+	margin-top:20px;
+}
+
+.table-list, th, td {
+	border: 1px solid black;
+}
 
 :root{
 	--main-color: #025781;
@@ -240,4 +249,47 @@ main{
 	width: 88%;
     left: 60px;
     }
+}
+
+#menuForm {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 0px 20px;
+}
+.control-grp {
+    padding-right: 5px;
+}
+.header{
+	display: block;
+    border: 1px solid;
+    margin-top: 10px;
+    padding: 0 200px 0;
+}
+
+.btn {
+	background-color: #607388;
+	color:#fff;
+	border-color: #607388;
+    padding: 0.0rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+	cursor: pointer;
+}
+
+.action{
+	padding: 10px;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.custom-select {
+	width: 100%;
+	padding: 6px 12px;
+	color: #555;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
 }

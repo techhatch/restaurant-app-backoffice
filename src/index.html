@@ -24,7 +24,7 @@
       <div class="sidebar-menu">
         <ul>
           <li>
-            <a href="#">
+            <a href="order.html">
               <span class="ti-home"></span>
               <span>Orders</span>
             </a>
@@ -42,15 +42,21 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="kitchen.html" class="changepage">
               <span class="ti-clipboard"></span>
               <span>Kitchen</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a  href="menu.html" class="changepage">
               <span class="ti-menu"></span>
               <span>Menu</span>
+            </a>
+          </li>
+          <li>
+            <a href="menu-category.html" class="changepage">
+              <span class="ti-panel"></span>
+              <span>Menu Category</span>
             </a>
           </li>
           <li>
@@ -65,12 +71,7 @@
               <span>Users</span>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <span class="ti-panel"></span>
-              <span>Categories</span>
-            </a>
-          </li>
+          
           <li>
             <a href="#">
               <span class="ti-settings"></span>
@@ -142,24 +143,29 @@
   
           <!-- Cards end -->
         <!-- FRee Container -->
-          <div class="container">
+          <div id="container" class="container">
             
           </div>
       </main>
     </div>
   
-  
-  
 
-    
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
 
-  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+    <!-- App scripts -->
+    <!-- <script src="js/menus.js" type="module"></script> -->
+
+     <!-- main.js  -->
+    <script src="js/main.js" type="module"></script> 
 </body>
 </html>
