@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Lora:wght@500&display=swap" rel="stylesheet">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="main container">
+        <div class="image">
+            <img src="img/res.jpg" alt="res" class="SignInImage">
+        </div>
+        <div class="SignIncontent">
+            <h1>Sign In</h1>
+            <hr>
+            <br>
+            <form novalidate id="signIn">
+                <div class="formbox">
+                    <ul>
+                        <li>
+                            <label>Email:</label>
+                            <input type="text" name="email" required>
+                        </li>
+                        <li>
+                            <label>Password:</label>
+                            <input type="password" name="password" required>
+                        </li>
+                    </ul>
+                    <div class="signUpButton">
+                        <label><input type="checkbox" name="rememberme" class="rememberme">Remember Me</label>
+                        <a name="signup" href="signup.html" style="color: red; display: block; text-align: center;">Not Registered Yet? Sign Up Instead</a>
+                        <a name="signup2" href="signup.html" style="color: skyblue; display: block; text-align: center;">Forgot Your Password?</a>
+                        <button type="submit">Sign In</button>
+                    </div>
+    
+                </div>
+                </form>
+            
+
+        </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+    <script src="js/signin.js" type="module"></script>
+</body>
+
+</html>

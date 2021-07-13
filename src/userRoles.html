@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Category</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="main container">
+        <div class="">
+            <h1>User Category</h1>
+            <hr>
+            <br>
+            <form novalidate id="userCategory">
+                <div class="formbox">
+                    <ul>
+                        <li>
+                            <label>Category:</label>
+                            <input type="text" name="Category" id = "Category" required>
+                        </li>
+                        <label>Active:</label>
+                        <input type="checkbox" name="isActive" id = "isActive" required>
+                        <li>
+                            <div class="signUpButton">
+                                <button type="submit">Save</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="text" style="display:none" name="id" id="id"  />  
+                
+                </div>
+            </form>
+            <div class="table">
+                <table id="customerTable" class="DataTable">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Active</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- existing data could optionally be included here -->
+                    </tbody>
+                </table>
+                <template id="customerRow">
+                    <tr>
+                        <td data-id="Category"></td>
+                        <td data-id="isActive"></td>
+                        <td class="text-center"><a href="#" class="editmenu action">Edit</a></a></td>
+                        <td class="text-center"><a href="#" class="delmenu action">Delete</a></td>
+  
+                    </tr>
+                </template>
+            </div>
+           
+        </div>
+    </div>
+
+
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+
+    <script src="js/userCategory.js" type="module"></script>
+</body>
+
+</html>

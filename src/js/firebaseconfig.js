@@ -1,6 +1,6 @@
 
 export default {
-  apiKey: "AIzaSyArhN_fUHGNRzG7x6TU9qYf3KUfgRm7ZBk",
+ apiKey: "AIzaSyArhN_fUHGNRzG7x6TU9qYf3KUfgRm7ZBk",
   authDomain: "restaurant-app-8b992.firebaseapp.com",
   projectId: "restaurant-app-8b992",
   storageBucket: "restaurant-app-8b992.appspot.com",

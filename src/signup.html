@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="main container">
+      <div class="image">
+        <img src="img/res.jpg" alt="res" class="signupImage" />
+      </div>
+      <div class="SignUpcontent">
+        <h1>Users Registration</h1>
+        <hr />
+        <br />
+        <form novalidate id="userReg">
+          <div class="formbox">
+            <ul>
+              <li>
+                <label>First Name:</label>
+                <input type="text" name="name" id="firstName" required />
+              </li>
+              <li>
+                <label>Last Name:</label>
+                <input type="text" name="name" id="lastName" required />
+              </li>
+              <li>
+                <label>Email:</label>
+                <input type="email" name="email" id="email" required />
+              </li>
+              <li>
+                <label>Password:</label>
+                <input type="password" name="password" id="password" required />
+              </li>
+              <li>
+                <label>Confirm Password:</label>
+                <input type="password" name="confirmPassword"  id="confirmPassword" required />
+              </li>
+              <li>
+                <label>Role:</label>
+                <select name="roles" id="roles">
+                </select>
+              </li>
+            </ul>
+            <div class="signUpButton">
+                <label><input type="checkbox" name="status" class="rememberme">Status</label>
+              <a href="signin.html" style="color: red; display: block; text-align: center;">Already a User? Login Instead</a>
+              <button type="submit">Sign Up</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+    <script src="js/users.js" type="module"></script>
+  </body>
+</html>
