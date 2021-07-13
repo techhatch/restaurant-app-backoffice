@@ -1,7 +1,7 @@
 import App from "./App.js";
 import { createRow, updateRow, deleteRow } from "./Util.js";
 
-var menuLoad = function() {
+export function menuLoad() {
     
     const db = App.getdb('Menu');
     db.renderToList((id, model, change) => {
@@ -47,42 +47,27 @@ var menuLoad = function() {
         }
         return false;
     });
-
-    setTimeout(() => {
-        // edit menu
-        const editMenuArr = document.querySelectorAll(".editmenu");
-        for (let i of editMenuArr) {
-            i.addEventListener("click", (e) => {
-                e.preventDefault();
-                let tr = e.currentTarget.parentElement.parentElement;
-                var td = tr.querySelectorAll('td');
-                const form = document.getElementById('menuForm');
-                for (let index = 0; index < form.length; index++) {
-                    const element = form[index];
-                    if (element && element.value != "Save" && element.name != "id")
-                        element.value = td[index].textContent;
-                    if(element.name == "id")
-                            element.value = tr.dataset.id;
-                }
-            });
-        }
-        // delete menu
-        const delMenuArr = document.querySelectorAll(".delmenu");
-        for (let i of delMenuArr) {
-            i.addEventListener("click", (e) => {
-                e.preventDefault();
-                let tr = e.currentTarget.parentElement.parentElement;
-                if(db.remove(tr.dataset.id))
-                    tr.remove();
-            });
-        }
-
-      }, 3000);
-        
-        
-
-
-    
 };
+// edit menu
+export function editMenu(selector){
+   
+    let tr = selector.parentElement.parentElement;
+    var td = tr.querySelectorAll('td');
+    const form = document.getElementById('menuForm');
+    for (let index = 0; index < form.length; index++) {
+        const element = form[index];
+        if (element && element.value != "Save" && element.name != "id")
+            element.value = td[index].textContent;
+        if(element.name == "id")
+                element.value = tr.dataset.id;
+    }
 
-export default menuLoad;
+}
+
+// delete menu
+export function deleteMenu(selector){
+    const db = App.getdb('Menu');
+    let tr = selector.parentElement.parentElement;
+    if(db.remove(tr.dataset.id))
+        tr.remove();
+}

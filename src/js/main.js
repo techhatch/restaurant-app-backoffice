@@ -1,5 +1,5 @@
-import menuLoad from "./menus.js";
-import kitchenLoad from "./kitchen.js";
+import {menuLoad,deleteMenu,editMenu} from "./menus.js";
+import {kitchenLoad,changeOrderStatus} from "./kitchen.js";
 function loadContainer(pagename) {
     console.log(pagename);
     var xhr = new XMLHttpRequest();
@@ -20,4 +20,21 @@ for (let i of arrPages) {
     if(e.currentTarget.getAttribute('href') == "kitchen.html")
         kitchenLoad();
   });
+}
+
+// Menu operations
+window.delMenu = function (e)
+{
+    deleteMenu(e);
+}
+
+window.ediMenu = function (e)
+{
+    editMenu(e);
+}
+
+// Kitchen Operations
+window.changeStatus = function (e)
+{
+    changeOrderStatus(e);
 }
