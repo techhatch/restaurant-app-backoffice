@@ -1,5 +1,7 @@
 import {menuLoad,deleteMenu,editMenu} from "./menus.js";
 import {kitchenLoad,changeOrderStatus} from "./kitchen.js";
+import {deleteUser,userLoad,edit_User,showPassword} from "./user.js";
+
 function loadContainer(pagename) {
     console.log(pagename);
     var xhr = new XMLHttpRequest();
@@ -19,6 +21,8 @@ for (let i of arrPages) {
         menuLoad();
     if(e.currentTarget.getAttribute('href') == "kitchen.html")
         kitchenLoad();
+    if(e.currentTarget.getAttribute('href') == "user.html")
+        userLoad();
   });
 }
 
@@ -28,9 +32,27 @@ window.delMenu = function (e)
     deleteMenu(e);
 }
 
+window.show_Password= function (e)
+{
+    showPassword();
+}
+
 window.ediMenu = function (e)
 {
     editMenu(e);
+}
+
+//User Management
+// User Delete operations
+window.delUser = function (ele)
+{
+    deleteUser(ele);
+}
+
+// User Edit operations
+window.editUser = function (ele)
+{
+    edit_User(ele);
 }
 
 // Kitchen Operations
