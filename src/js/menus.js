@@ -3,7 +3,6 @@ import { createRow, updateRow, deleteRow } from "./Util.js";
 
 export function menuLoad() {
 
-    
     const db = App.getdb('Menu');
     db.renderToList((id, model, change) => {
         if (model) {
@@ -16,7 +15,6 @@ export function menuLoad() {
             }
         }
     });
-
 
     document.addEventListener('submit', async function(e) {
         e.preventDefault();
