@@ -1,13 +1,13 @@
 import App from "./App.js";
 import { createRow, updateRow, deleteRow } from "./Util.js";
 
-export function custLoad() {
+export function userLoad() {
     
-    const db = App.getdb('Customers');
+    const db = App.getdb('User');
     db.renderToList((id, model, change) => {
         if (model) {
             if (change == 'added') {
-                createRow('#custRow', id, model);
+                createRow('#userRow', id, model);
             } else if (change == 'modified') {
                 updateRow(id, model);
             } else {
@@ -18,12 +18,12 @@ export function custLoad() {
 
     document.addEventListener('submit', async function(e) {
         e.preventDefault();
-        const form = document.getElementById('custManagement');
+        const form = document.getElementById('userManagement');
         var model = {};
         var modelid;
         for (let index = 0; index < form.length; index++) {
             const element = form[index];
-            if (element && element.value && element.value != "Update" && element.name != "modelId")
+            if (element && element.value && element.value != "Save" && element.name != "modelId")
                 if(element.name=="status")
                 {
                     var checkBox = document.getElementById("status");
@@ -63,14 +63,6 @@ export function custLoad() {
 
             form.reset();
             document.getElementById("statusgroup").style.visibility="hidden";
-            var firstName = document.getElementById("firstName");
-            firstName.readOnly= true;
-            var lastName = document.getElementById("lastName");
-            lastName.readOnly= true;
-            var userName = document.getElementById("userName");
-            userName.readOnly= true;
-            var password = document.getElementById("password");
-            password.readOnly= true;
         }
         return false;
     });
@@ -81,24 +73,16 @@ export function custLoad() {
 };
 
 //Edit User 
-export function edit_Cust(ele){
+export function edit_User(ele){
 
     let tr = ele.parentElement.parentElement;
     var td = tr.querySelectorAll('td');
-    const form = document.getElementById('custManagement');
+    const form = document.getElementById('userManagement');
     var checkBoxgroup = document.getElementById("statusgroup");
     checkBoxgroup.style.visibility= "visible";
-    var firstName = document.getElementById("firstName");
-    firstName.readOnly= false;
-    var lastName = document.getElementById("lastName");
-    lastName.readOnly= false;
-    var userName = document.getElementById("userName");
-    userName.readOnly= false;
-    var password = document.getElementById("password");
-    password.readOnly= false;
     for (let index = 0; index < form.length; index++) {
         const element = form[index];
-        if (element && element.value != "Update" && element.name != "modelId")
+        if (element && element.value != "Save" && element.name != "modelId")
             if(element.name == "status")
             {
                 if(td[index].textContent=='1')
@@ -119,11 +103,20 @@ export function edit_Cust(ele){
     }
 }
 
-// export function showPassword(){
-//     var x = document.getElementById("password");
-//     if (x.type === "password") {
-//       x.type = "text";
-//     } else {
-//       x.type = "password";
-//     }
-// }
+
+// delete user
+export function deleteUser(ele){
+    const db = App.getdb('User');
+    let tr = ele.parentElement.parentElement;
+    if(db.remove(tr.dataset.id))
+        tr.remove();
+}
+
+export function showPassword(){
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+}
