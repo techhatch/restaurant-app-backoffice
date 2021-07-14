@@ -13,7 +13,7 @@ export function createRow(selector, id, data) {
         const propertyNames = Object.keys(data);
         propertyNames.forEach((element, index) => {
             const col = td[index];
-            if(index == 3 && selector == "#kitchenRow")
+            if(index == 3 && (selector == "#kitchenRow" || selector == "#ordersRow"))
                 col.getElementsByTagName("select")[0].value = data[col.dataset.id];
             else
                 col.textContent = data[col.dataset.id];
@@ -33,7 +33,7 @@ export function updateRow(id, data,selector=null) {
         const propertyNames = Object.keys(data);
         propertyNames.forEach((element, index) => {
             const col = td[index];
-            if(selector && selector == "#kitchenRow" && index == 3 )
+            if(selector && (selector == "#kitchenRow" || selector == "#ordersRow") && index == 3 )
                 col.getElementsByTagName("select")[0].value = data[col.dataset.id];
             else
                 col.textContent = data[col.dataset.id];

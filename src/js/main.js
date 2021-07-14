@@ -1,5 +1,6 @@
 import {menuLoad,deleteMenu,editMenu} from "./menus.js";
 import {kitchenLoad,changeOrderStatus} from "./kitchen.js";
+import {ordersLoad, OrderStatusChange} from "./order.js";
 import {deleteUser,userLoad,edit_User,showPassword} from "./user.js";
 
 function loadContainer(pagename) {
@@ -23,6 +24,8 @@ for (let i of arrPages) {
         kitchenLoad();
     if(e.currentTarget.getAttribute('href') == "user.html")
         userLoad();
+    if(e.currentTarget.getAttribute('href') == "orders.html")
+        ordersLoad();
   });
 }
 
@@ -59,4 +62,11 @@ window.editUser = function (ele)
 window.changeStatus = function (e)
 {
     changeOrderStatus(e);
+}
+
+//Order Operations
+
+window.changeOrderStatus = function(e)
+{
+    OrderStatusChange(e);
 }
