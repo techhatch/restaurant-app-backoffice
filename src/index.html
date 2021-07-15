@@ -18,10 +18,14 @@
     <div class="sidebar">
              <!-- SIdebar - Header  -->
       <div class="sidebar-header">
+        <a href="index.html" class="changepage">
         <h3 class="brand">
-          <span class="ti-dashboard"></span>
-          <span class="active">Dashboard</span>
+          
+              <span class="ti-dashboard"></span>
+              <span class="active">Dashboard</span>
+          
         </h3>
+      </a>
         <label for="sidebar-toggle" class="ti-menu-alt"></label>
       </div>
              <!-- Sidebar - menu -->
@@ -111,8 +115,8 @@
             <div class="card-body">
               <span class="ti-briefcase"></span>
               <div>
-                <h5>Account Balance</h5>
-                <h4>3000000</h4>
+                <h5>Orders In Progress</h5>
+                <h4 id="or_in_pr">0</h4>
               </div>
             </div>
             <div class="card-footer">
@@ -123,8 +127,8 @@
             <div class="card-body">
               <span class="ti-reload"></span>
               <div>
-                <h5>Pending</h5>
-                <h4>16000000</h4>
+                <h5>Orders in Delivery</h5>
+                <h4 id="or_in_del">0</h4>
               </div>
             </div>
             <div class="card-footer">
@@ -135,14 +139,28 @@
             <div class="card-body">
               <span class="ti-check-box"></span>
               <div>
-                <h5>Processed</h5>
-                <h4>18000000</h4>
+                <h5>Orders Delivered</h5>
+                <h4 id="or_del">0</h4>
               </div>
             </div>
             <div class="card-footer">
               <a href="#">View all</a>
             </div>
           </div>
+
+          <div class="card-single">
+            <div class="card-body">
+              <span class="ti-money"></span>
+              <div>
+                <h5>Current Sale</h5>
+                <h4 id="curr_sale">0</h4>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#">View all</a>
+            </div>
+          </div>
+
         </div>
   
           <!-- Cards end -->

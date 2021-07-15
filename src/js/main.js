@@ -1,10 +1,10 @@
+import "./dashboard.js";
 import {menuLoad,deleteMenu,editMenu} from "./menus.js";
 import {kitchenLoad,changeOrderStatus} from "./kitchen.js";
 import {ordersLoad, OrderStatusChange} from "./order.js";
 import {deleteUser,userLoad,edit_User,showPassword} from "./user.js";
 import {custLoad,edit_Cust} from "./customers.js";
 import {editReservation, reservationLoad,deleteReservation} from "./tableReservation.js";
-
 
 function loadContainer(pagename) {
     console.log(pagename);
@@ -23,6 +23,7 @@ for (let i of arrPages) {
     
     let page = e.currentTarget.getAttribute('href');
     switch(page)
+
     {
         case 'index.html':
             document.getElementById("container").innerHTML = "";
@@ -53,6 +54,7 @@ for (let i of arrPages) {
         case 'table-reservation.html':
             loadContainer(page);
             reservationLoad();
+
         break;
         default:
             loadContainer('index.html');
