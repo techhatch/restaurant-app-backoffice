@@ -36,7 +36,7 @@ for (let i of arrPages) {
 
         case 'user.html':
             loadContainer(page);
-            userLoad();();
+            userLoad();
         break;
 
         case 'orders.html':
