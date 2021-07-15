@@ -1,6 +1,9 @@
 import "./dashboard.js";
 import {menuLoad,deleteMenu,editMenu} from "./menus.js";
 import {kitchenLoad,changeOrderStatus} from "./kitchen.js";
+import {ordersLoad, OrderStatusChange} from "./order.js";
+import {deleteUser,userLoad,edit_User,showPassword} from "./user.js";
+import {custLoad,edit_Cust} from "./customers.js";
 
 function loadContainer(pagename) {
     console.log(pagename);
@@ -15,10 +18,9 @@ function loadContainer(pagename) {
 const arrPages = document.querySelectorAll(".changepage");
 for (let i of arrPages) {
   i.addEventListener("click", (e) => {
-    e.preventDefault();
-    
+    e.preventDefault();    
     let page = e.currentTarget.getAttribute('href');
-    switch(page)
+     switch(page)
     {
         case 'index.html':
             document.getElementById("container").innerHTML = "";
@@ -32,7 +34,30 @@ for (let i of arrPages) {
             kitchenLoad();
         break;
 
+        case 'user.html':
+            loadContainer(page);
+            userLoad();();
+        break;
+
+        case 'orders.html':
+            loadContainer(page);
+            ordersLoad();
+        break;
+
+        case 'customer.html':
+            loadContainer(page);
+            custLoad();
+        break;
+        case 'table-reservation.html':
+            loadContainer(page);
+            custLoad();
+        break;
+        default:
+            loadContainer('index.html');
+            document.getElementById("container").innerHTML = "";
+
     }
+
   });
 }
 
@@ -42,9 +67,27 @@ window.delMenu = function (e)
     deleteMenu(e);
 }
 
+window.show_Password= function (e)
+{
+    showPassword();
+}
+
 window.ediMenu = function (e)
 {
     editMenu(e);
+}
+
+//User Management
+// User Delete operations
+window.delUser = function (ele)
+{
+    deleteUser(ele);
+}
+
+// User Edit operations
+window.editUser = function (ele)
+{
+    edit_User(ele);
 }
 
 // Kitchen Operations
@@ -53,3 +96,16 @@ window.changeStatus = function (e)
     changeOrderStatus(e);
 }
 
+//Order Operations
+
+window.changeOrderStatus = function(e)
+{
+    OrderStatusChange(e);
+}
+
+// Customer Operations
+
+window.editCust = function(ele)
+{
+    edit_Cust(ele);
+}
