@@ -1,8 +1,8 @@
 
 import App from "./App.js";
-const form = document.getElementById("userCategory");
-const db = App.getdb("userCategory");
-
+const form = document.getElementById("userRoles");
+const db = App.getdb("userRoles");
+import firebaseConfig1 from "./firebaseconfig.js";
 
 
 
@@ -28,8 +28,8 @@ document.addEventListener('submit', async function(e) {
         }
         else
         {
-            var docd = await db.query('password', '==', model.password) ;
-            debugger;
+            var docd = await db.queryWith2Params('email', '==', model.email,'password', model.password) ;
+    
         if (docd.size == 0) {
             
             alert('Incorrect password');
@@ -37,7 +37,8 @@ document.addEventListener('submit', async function(e) {
         }
         else
         {
-           
+            // sessionStorage.setItem('status');
+        
             location.href = "./index.html";
         }
            

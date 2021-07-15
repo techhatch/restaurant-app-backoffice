@@ -45,6 +45,11 @@ var myApp = (function() {
             query = query.where(fieldPath, optStr, value);
             return query.get();
         }
+        queryWith2Params(fieldPath, optStr, value,fieldPath2, value2) {
+            let query = this._getcollection().limit(1);
+            query = query.where(fieldPath, optStr, value,fieldPath2, optStr, value2);
+            return query.get();
+        }
         add(item) {
             const collection = this._getcollection();
             return collection.add(item);

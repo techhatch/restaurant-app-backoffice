@@ -22,11 +22,11 @@
             <ul>
               <li>
                 <label>First Name:</label>
-                <input type="text" name="name" id="firstName" required />
+                <input type="text" name="firstName" id="firstName" required />
               </li>
               <li>
                 <label>Last Name:</label>
-                <input type="text" name="name" id="lastName" required />
+                <input type="text" name="lastName" id="lastName" required />
               </li>
               <li>
                 <label>Email:</label>
@@ -47,7 +47,7 @@
               </li>
             </ul>
             <div class="signUpButton">
-                <label><input type="checkbox" name="status" class="rememberme">Status</label>
+                <label><input type="checkbox" name="status" class="rememberme" style="display: none;"></label>
               <a href="signin.html" style="color: red; display: block; text-align: center;">Already a User? Login Instead</a>
               <button type="submit">Sign Up</button>
             </div>
@@ -67,5 +67,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
     <script src="js/users.js" type="module"></script>
+
+
   </body>
 </html>

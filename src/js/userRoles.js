@@ -1,8 +1,8 @@
 
 import App from "./App.js";
 import { createRow, updateRow, deleteRow } from "./Util.js";
-const form = document.getElementById("userCategory");
-const db = App.getdb("userCategory");
+const form = document.getElementById("userRoles");
+const db = App.getdb("userRoles");
 
 (function LoadingFuncion() {
   document.addEventListener("readystatechange", function (e) {
@@ -31,13 +31,22 @@ const db = App.getdb("userCategory");
         
         let tr = e.currentTarget.parentElement.parentElement;
         var td = tr.querySelectorAll("td");
-        const form = document.getElementById("userCategory");
+        const form = document.getElementById("userRoles");
         for (let index = 0; index < form.length; index++) {
           const element = form[index];
           if (element && element.value != "Save" && element.name != "id")
             element.value = td[index].textContent;
           if (element.name == "id") element.value = tr.dataset.id;
-          if (element.name == "isActive") element.checked = td[index].textContent;
+          if(element.name == "isActive") 
+            {
+              if(td[index].textContent=="1"){
+                element.checked = true; 
+              }
+              else{
+                element.checked = false; 
+              }
+            }
+
         }
       });
     }
@@ -55,8 +64,8 @@ const db = App.getdb("userCategory");
 
 document.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const db = App.getdb('userCategory');
-    const form = document.getElementById('userCategory');
+    const db = App.getdb('userRoles');
+    const form = document.getElementById('userRoles');
     var model = {};
     var modelid;
     for (let index = 0; index < form.length; index++) {
@@ -66,10 +75,19 @@ document.addEventListener('submit', async function(e) {
         if(element.name == "id" && element.value) 
             modelid = element.value; 
             if(element.name == "isActive") 
-            model[element.name] = element.checked;   
+            {
+              if(element.checked==true){
+                model[element.name] = "1";   
+              }
+              else{
+                model[element.name] = "0";   
+              }
+            }
+           
     }
-    if (model.Category) {
-        var doc = await db.query('Category', '==', model.Category);
+    debugger;
+    if (model.Role) {
+        var doc = await db.query('Role', '==', model.Role);
         console.log(doc);
         if (doc.size == 0 && !modelid) {
             await db.add(model)

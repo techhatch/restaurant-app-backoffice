@@ -5,7 +5,7 @@ import App from "./App.js";
 // debugger;
 const db = App.getdb('userCategory');
     var select = document.getElementById('roles');
-    var values = ["Admin", "Driver", "Cook", "POS User"];
+    var values = ["Admin", "Manager", "Cook"];
      
         for (const val of values)
         {
@@ -31,14 +31,19 @@ const db = App.getdb('userCategory');
                 const element = form[index];
                 if (element && element.value){
                     console.log(element.name);
-                    if (element.value != "Sign Up" && element.name != "confirmPassword")
+                    if (element.value != "Sign Up" && element.name != "confirmPassword" && element.name != "status")
                     {
                         model[element.name] = element.value;
                 }
+                if(element.name == "status") 
+            {
+                model[element.name] = "1";   
+            }
                 
             }
                 }
-            if (model.name && model.email) {
+
+            if (model.password && model.email && model.firstName) {
                 var doc = await db.query('email', '==', model.email);
                 console.log(doc);
                 if (doc.size == 0) {
