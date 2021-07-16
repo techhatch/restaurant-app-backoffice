@@ -8,6 +8,8 @@ import firebaseConfig1 from "./firebaseconfig.js";
 
 document.addEventListener('submit', async function(e) {
     e.preventDefault();
+    debugger;
+
     const db = App.getdb('users');
     const form = document.getElementById('signIn');
     var model = {};
@@ -20,28 +22,24 @@ document.addEventListener('submit', async function(e) {
     }
    
     if (model.email && model.password ) {
-        var doc = await db.query('email', '==', model.email);
-        if (doc.size == 0) {
+        var query = db.getcollection().where('email', '==', model.email);
+        query = query.where('password', '==', model.password);
+        var result = await query.get();
+        if (result.size == 0) {
             
-            alert('email not found');
-            
+            alert('Incorrect username or password');
+            //div or toaster
         }
         else
         {
-            var docd = await db.queryWith2Params('email', '==', model.email,'password', model.password) ;
-    
-        if (docd.size == 0) {
-            
-            alert('Incorrect password');
-            
-        }
-        else
-        {
-            // sessionStorage.setItem('status');
-        
-            location.href = "./index.html";
-        }
-           
+            debugger;
+var model =  result.docs[0].data();
+delete model.password;
+// model.password  = '*';
+sessionStorage.setItem('user',JSON.stringify(model));
+
+        this.location.href = './index.html';
+
         }
     
     }

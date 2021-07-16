@@ -23,7 +23,7 @@ var myApp = (function() {
         constructor(collectionName) {
             this.collectionName = collectionName;
         }
-        _getcollection = function() {
+        getcollection = function() {
             return firestore.collection(this.collectionName);
         };
         _getDocumentInQuery(query, render) {
@@ -37,33 +37,33 @@ var myApp = (function() {
             });
         }
         renderToList(render) {
-            let query = this._getcollection();
+            let query = this.getcollection();
             this._getDocumentInQuery(query, render);
         }
         query(fieldPath, optStr, value) {
-            let query = this._getcollection().limit(1);
+            let query = this.getcollection().limit(1);
             query = query.where(fieldPath, optStr, value);
             return query.get();
         }
         queryWith2Params(fieldPath, optStr, value,fieldPath2, value2) {
-            let query = this._getcollection().limit(1);
+            let query = this.getcollection().limit(1);
             query = query.where(fieldPath, optStr, value,fieldPath2, optStr, value2);
             return query.get();
         }
         add(item) {
-            const collection = this._getcollection();
+            const collection = this.getcollection();
             return collection.add(item);
         }
         async get(id) {
-            const collection = this._getcollection();
+            const collection = this.getcollection();
             return await collection.get(id);
         }
         async remove(id) {
-            const collection = this._getcollection();
+            const collection = this.getcollection();
             return await collection.doc(id).delete();
         }
         async update(id, item) {
-            const collection = this._getcollection();
+            const collection = this.getcollection();
             return await collection.doc(id).update(item);
         }
     }
