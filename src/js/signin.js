@@ -4,12 +4,12 @@ const form = document.getElementById("userRoles");
 const db = App.getdb("userRoles");
 import firebaseConfig1 from "./firebaseconfig.js";
 
-
+(function RefreshPage(){
+    sessionStorage.clear();
+})();
 
 document.addEventListener('submit', async function(e) {
     e.preventDefault();
-    debugger;
-
     const db = App.getdb('users');
     const form = document.getElementById('signIn');
     var model = {};
@@ -36,7 +36,8 @@ document.addEventListener('submit', async function(e) {
 var model =  result.docs[0].data();
 delete model.password;
 // model.password  = '*';
-sessionStorage.setItem('user',JSON.stringify(model));
+sessionStorage.clear();
+sessionStorage.setItem('userRole',model.role);
 
         this.location.href = './index.html';
 
