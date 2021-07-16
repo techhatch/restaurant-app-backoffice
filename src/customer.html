@@ -1,0 +1,63 @@
+<div class="customer-container">
+    <div class="userheader">
+        <form novalidate id="custManagement">
+
+            <div class="control-grp">
+                <label>First Name</label>
+                <input type="text" name="firstName" id="firstName" readonly="true"/>
+            </div>
+            <div class="control-grp">
+                <label>Last Name</label>
+                <input type="text" name="lastName" id="lastName" readonly="true"/>
+            </div>
+            <div class="control-grp">
+                <label>User Name</label>
+                <input type="text" name="userName" id="userName" readonly="true"/>
+            </div>
+            <div class="control-grp">
+                <label>Password</label>
+                <input type="password" name="password" id="password" readonly="true"/> <i class="fa fa-eye" aria-hidden="true" onclick="show_Password();"></i>
+            </div>
+             <div class="control-grp" id="statusgroup"style="visibility: hidden;">
+                <label>Status</label>
+                <input type="checkbox" name="status" id="status" checked >
+            </div>
+            <input type="text" style="display:none" name="modelId" id="modelId" /> 
+            <div class="control-grp">
+                <input type="submit" class="submit" value="Update" />
+            </div>
+            
+        </form>
+    </div>
+    <div class="table">
+        <table id="custTable">
+            <caption>
+                Customers
+            </caption>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Name</th>
+                    <th>Password</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- existing data could optionally be included here -->
+            </tbody>
+        </table>
+
+        <template id="custRow">
+            <tr>
+                <td data-id="firstName"></td>
+                <td data-id="lastName"></td>
+                <td data-id="userName"></td>
+                <td data-id="password"></td>
+                <td data-id="status"></td>
+                <td><i class="fas fa-edit" onclick="editCust(this);"></i>
+            </tr>
+        </template>
+    </div>
+</div>

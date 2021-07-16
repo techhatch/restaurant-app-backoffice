@@ -1,0 +1,25 @@
+  #ordersTable {
+    width: 100%;
+    margin-top:20px;
+  }
+
+  #ordersTable th,td{
+    border: solid 1px rgba(10, 133, 233, 0.884);
+  }
+  .userheader
+  {
+    margin-left: 60px;
+  }
+  #ordersTable,td {
+    text-align: center;
+  }
+  
+  .order-container{
+    background-color:#025781 ;
+  color: white;
+  }
+  
+  .order-container:hover{
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+  }

@@ -1,9 +1,9 @@
-
 export default {
-  apiKey: "AIzaSyBLpolP5IIzJxnv3iTLl7PuuGetVrIt2tI",
-  authDomain: "crud-6ff60.firebaseapp.com",
-  projectId: "crud-6ff60",
-  storageBucket: "crud-6ff60.appspot.com",
-  messagingSenderId: "901446171276",
-  appId: "1:901446171276:web:36cec09ca85e95889f19a9"
+    apiKey: "AIzaSyBbtdQBF01HUt51eZmUdwUJjwr29w_jaSg",
+    authDomain: "bonfire-207913.firebaseapp.com",
+    databaseURL: "https://bonfire-207913.firebaseio.com",
+    projectId: "bonfire-207913",
+    storageBucket: "bonfire-207913.appspot.com",
+    messagingSenderId: "757617452040",
+    appId: "1:757617452040:web:5f277923ce60e40bc89dbd"
 };
