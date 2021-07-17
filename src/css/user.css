@@ -8,9 +8,12 @@
 }
 #userTable {
   width: 100%;
-  border: solid 1px rgba(10, 133, 233, 0.884);
+  border: 1px solid rgba(115, 152, 228, 0);
 }
 
+#userTable,th ,td{
+  border: 1px solid rgba(255, 252, 252, 0);
+}
 .userheader
 {
   margin-left: 60px;

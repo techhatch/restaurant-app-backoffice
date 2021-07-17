@@ -30,17 +30,14 @@ for (let i of arrPages) {
                 document.getElementById("container").innerHTML = "";
                 break;
             case 'menu.html':
-                loadContainer(page);
-                menuLoad();
+                loadContainer(page,menuLoad);
                 break;
             case 'kitchen.html':
-                loadContainer(page);
-                kitchenLoad();
+                loadContainer(page,kitchenLoad);
                 break;
 
             case 'user.html':
-                loadContainer(page);
-                userLoad();
+                loadContainer(page,userLoad);
                 break;
 
             case 'orders.html':
@@ -48,12 +45,10 @@ for (let i of arrPages) {
                 break;
 
             case 'customer.html':
-                loadContainer(page);
-                custLoad();
+                loadContainer(page,custLoad);
                 break;
             case 'table-reservation.html':
-                loadContainer(page);
-                reservationLoad();
+                loadContainer(page,reservationLoad);
 
                 break;
             default:

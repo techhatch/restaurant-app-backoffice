@@ -1,34 +1,36 @@
 <div class="order-container">
-<table class="table-list" id="ordersTable">
-    <thead>
-      <tr>
-        <th>Order No.</th>
-        <th>Customer</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Price</th>
-        <th>Address</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-    </table>
-    
-    <template id="ordersRow">
-      <tr>
-          <td class="text-center" data-id="orderNo"></td>
-          <td class="text-center" data-id="customerName"></td>
-          <td class="text-center" data-id="date"></td>
-          <td class="text-center" data-id="status">
-            <select class="custom-select" onchange="changeOrderStatus(this)">
-              <option value="In kitchen">Send to kitchen </option>
-              <option value="Dispatched">Dispatched </option>
-              <option value="Delivered">Delivered </option>
-              <option value="Completed">Complete Order </option>
-              <option value="Canceled">Cancel Order </option>
-            </select>
-          </td>
-          <td class="text-center" data-id="price"></td>
-          <td class="text-center" data-id="address"></td>
-      </tr>
-    </template>
-</div>
+  <table class="#orderTable" id="ordersTable">
+      <thead>
+        <tr>
+          <th>Order No.</th>
+          <th>Customer</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Price</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      </table>
+      
+      <template id="ordersRow">
+        <tr>
+            <td class="text-center" data-id="orderNo"></td>
+            <td class="text-center" data-id="customerName"></td>
+            <td class="text-center" data-id="date"></td>
+            <td class="text-center" data-id="status">
+              <select class="custom-select" onchange="changeOrderStatus(this)">
+                <option value="In kitchen">Send to kitchen </option>
+                <option value="Dispatched">Dispatched </option>
+                <option value="Delivered">Delivered </option>
+                <option value="Completed">Complete Order </option>
+                <option value="Canceled">Cancel Order </option>
+                <option value="Preparing">Preparing </option>
+                <option value="Ready">Ready </option>
+              </select>
+            </td>
+            <td class="text-center" data-id="price"></td>
+            <td class="text-center" data-id="address"></td>
+        </tr>
+      </template>
+  </div>
