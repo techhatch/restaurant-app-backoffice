@@ -1,9 +1,9 @@
 export default {
-    apiKey: "AIzaSyBbtdQBF01HUt51eZmUdwUJjwr29w_jaSg",
-    authDomain: "bonfire-207913.firebaseapp.com",
-    databaseURL: "https://bonfire-207913.firebaseio.com",
-    projectId: "bonfire-207913",
-    storageBucket: "bonfire-207913.appspot.com",
-    messagingSenderId: "757617452040",
-    appId: "1:757617452040:web:5f277923ce60e40bc89dbd"
+    apiKey: "AIzaSyAdafK7BfWZUjPtv1xX_XpgFAsmH7G8AKY",
+  authDomain: "techhatch-e0375.firebaseapp.com",
+  projectId: "techhatch-e0375",
+  storageBucket: "techhatch-e0375.appspot.com",
+  messagingSenderId: "665881426996",
+  appId: "1:665881426996:web:2d124e1702aa9bc3ff9e61",
+  measurementId: "G-CJXKQGK5YQ"
 };

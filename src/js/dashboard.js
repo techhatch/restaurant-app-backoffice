@@ -4,9 +4,9 @@ import { inProgress, isCompleted } from "./OrderStatus.js";
 const statusField = 'status';
 export function loadDashboard() {
 
-    const db = App.getdb('Orders');
-    const db2 = App.getdb('OrderDetails');
-    const collection = db._getcollection();
+    const db = App.createDb('Orders');
+    const db2 = App.createDb('OrderDetails');
+    const collection = db.getCollection();
     collection.onSnapshot(async(snapshot) => {
         snapshot.docChanges().forEach(async() => {
             // Order In Progress

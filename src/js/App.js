@@ -14,58 +14,69 @@
 
 import firebaseConfig from "./firebaseconfig.js";
 
-var myApp = (function() {
-    // Initialize Firebase
-    var _app = firebase.initializeApp(firebaseConfig);
-    var firestore = _app.firestore();
-    var that = {};
-    class db {
-        constructor(collectionName) {
-            this.collectionName = collectionName;
-        }
-        _getcollection = function() {
-            return firestore.collection(this.collectionName);
-        };
-        _getDocumentInQuery(query, render) {
-            query.onSnapshot((snapshot) => {
-                if (!snapshot.size) {
-                    return render();
-                }
-                snapshot.docChanges().forEach((change) => {
-                    render(change.doc.id, change.doc.data(), change.type);
-                });
-            });
-        }
-        renderToList(render) {
-            let query = this._getcollection();
-            this._getDocumentInQuery(query, render);
-        }
-        query(fieldPath, optStr, value) {
-            let query = this._getcollection().limit(1);
-            query = query.where(fieldPath, optStr, value);
-            return query.get();
-        }
-        add(item) {
-            const collection = this._getcollection();
-            return collection.add(item);
-        }
-        async get(id) {
-            const collection = this._getcollection();
-            return await collection.get(id);
-        }
-        async remove(id) {
-            const collection = this._getcollection();
-            return await collection.doc(id).delete();
-        }
-        async update(id, item) {
-            const collection = this._getcollection();
-            return await collection.doc(id).update(item);
-        }
-    }
-    that.getdb = function(collectionName) {
-        return new db(collectionName);
-    };
-    return that;
-})();
+class App {
+    constructor() {
 
-export default myApp;
+        /**
+         * Database Client with collection
+         */
+        class db {
+            /**
+             *
+             * @param {string} collectionName Collection Name on firestore
+             */
+            constructor(collectionName) {
+                this.collectionName = collectionName;
+            }
+
+            getCollection = function () {
+                return firestore.collection(this.collectionName);
+            };
+            getDocumentInQuery(query, render) {
+                query.onSnapshot((snapshot) => {
+                    if (!snapshot.size) {
+                        return render();
+                    }
+                    snapshot.docChanges().forEach((change) => {
+                        render(change.doc.id, change.doc.data(), change.type);
+                    });
+                });
+            }
+            renderToList(render) {
+                let query = this.getCollection();
+                this.getDocumentInQuery(query, render);
+            }
+            query(fieldPath, optStr, value) {
+                let query = this.getCollection().limit(1);
+                query = query.where(fieldPath, optStr, value);
+                return query.get();
+            }
+            add(item) {
+                const collection = this.getCollection();
+                return collection.add(item);
+            }
+            async get(id) {
+                const collection = this.getCollection();
+                return await collection.get(id);
+            }
+            async remove(id) {
+                const collection = this.getCollection();
+                return await collection.doc(id).delete();
+            }
+            async update(id, item) {
+                const collection = this.getCollection();
+                return await collection.doc(id).update(item);
+            }
+        }
+        const app = firebase.initializeApp(firebaseConfig);
+        const firestore = app.firestore();
+        this.createDb = function (collectionName) {
+            return new db(collectionName);
+        };
+
+    }
+}
+
+ 
+
+export default new App();

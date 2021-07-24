@@ -2,7 +2,7 @@ import App from "./App.js";
 import { createRow, updateRow, deleteRow,convertToLocalDateTime } from "./Util.js";
 
 export function ordersLoad() {
-    const db = App.getdb('Orders');
+    const db = App.createDb('Orders');
     db.renderToList((id, model, change) => {
         if (model) {
             model.date = convertToLocalDateTime(new Date(model.date.seconds*1000));
@@ -21,7 +21,7 @@ export function ordersLoad() {
 export async function OrderStatusChange(selector){
     let tr = selector.parentElement.parentElement;
     let status = selector.value;
-    const db = App.getdb('Orders');
+    const db = App.createDb('Orders');
     db.update(tr.dataset.id,{"status":status});
 
 }
