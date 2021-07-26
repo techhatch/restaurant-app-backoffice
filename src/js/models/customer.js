@@ -1,7 +1,9 @@
+import { Model } from "./model.js";
+
 /**
  * Customer Model
  */
-class Customer {
+class Customer extends Model {
 
 
     /**
@@ -10,18 +12,7 @@ class Customer {
      * @param {object} restParameters field values
      */
     constructor(form, obj) {
-        if(form && !obj)
-        {
-            const elems = form.elements;
-            this.firstName = elems['firstName'].value;
-            this.lastName = elems['lastName'].value;
-            this.userName = elems['userName'].value;
-            const status = elems['status'].checked;
-            this.status  = status ? "1" :"0"; 
-            this.documentId = elems['modelId'].value;
-            const _pass = elems['password'].value;
-            this.setPassword(_pass);
-        }
+        super('firstName', 'lastName', 'userName', 'status', 'modelId', 'password');
         if (obj) {
             this.firstName = obj['firstName'];
             this.lastName = obj['lastName'];
@@ -30,20 +21,20 @@ class Customer {
             this.documentId = obj['id'];
             const _pass = obj['password'];
             this.setPassword(_pass);
-            if (form) {
-                this.form = form;
-                Object.keys(this).forEach(key => {
-                    const elem = form.elements[key];
-                    if (elem) {
-                        if (elem.dataset.type === 'securetext') {
-                            elem.value = this.#decrypt(this[key]);
-                        }
-                        else {
-                            elem.value = this[key];
-                        }
-                    }
-                });
-            }
+            // if (form) {
+            //     this.form = form;
+            //     Object.keys(this).forEach(key => {
+            //         const elem = form.elements[key];
+            //         if (elem) {
+            //             if (elem.dataset.type === 'securetext') {
+            //                 elem.value = this.#decrypt(this[key]);
+            //             }
+            //             else {
+            //                 elem.value = this[key];
+            //             }
+            //         }
+            //     });
+            // }
         }
 
     }
@@ -84,29 +75,29 @@ class Customer {
         return this.#decrypt(this.password);
     }
 
-    /**
-     * Plain object value
-     * @returns {Object}
-     */
-    toObject() {
-        let obj = {};
-        obj['firstName'] = this.firstName;
-        obj['lastName'] = this.lastName;
-        obj['userName'] = this.userName;
-        obj['status'] = this.status;
-        obj['password'] = this.password; //this.#decrypt(this.password);
-        return obj;
-    }
-    update() {
-        if (!this.form) return;
-        const obj = this.form.elements;
-        this.firstName = obj['firstName'].value;
-        this.lastName = obj['lastName'].value;
-        this.userName = obj['userName'].value;
-        this.status = obj['status'].value;
-        const _pass = obj['password'].value;
-        this.setPassword(_pass);
-    }
+    // /**
+    //  * Plain object value
+    //  * @returns {Object}
+    //  */
+    // toObject() {
+    //     let obj = {};
+    //     obj['firstName'] = this.firstName;
+    //     obj['lastName'] = this.lastName;
+    //     obj['userName'] = this.userName;
+    //     obj['status'] = this.status;
+    //     obj['password'] = this.password; //this.#decrypt(this.password);
+    //     return obj;
+    // }
+    // update() {
+    //     if (!this.form) return;
+    //     const obj = this.form.elements;
+    //     this.firstName = obj['firstName'].value;
+    //     this.lastName = obj['lastName'].value;
+    //     this.userName = obj['userName'].value;
+    //     this.status = obj['status'].value;
+    //     const _pass = obj['password'].value;
+    //     this.setPassword(_pass);
+    // }
 }
 
 export default Customer;

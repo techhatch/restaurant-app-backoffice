@@ -6,7 +6,7 @@ import { deleteUser, userLoad, edit_User, showPassword } from "./user.js";
 import { custLoad, editCustomer } from "./customers.js";
 import { editReservation, reservationLoad, deleteReservation } from "./tableReservation.js";
 import { NavigationItem, Navigation } from "./navigation.js";
-import userCategory from "./userCategory.js";
+import {onloadData   as userCategoryload  } from "./userCategory.js";
 
 const nav = document.querySelector('.sidebar-menu > nav');
 const container = document.querySelector('#container');
@@ -25,7 +25,7 @@ window.navBar.render(
     new NavigationItem('nav-packages', 'Packages', '#', 'ti-package'),
     new NavigationItem('nav-users', 'Users', '/components/user.html', 'ti-user', (dom) => userLoad(dom)),
     new NavigationItem('nav-settings', 'Settings', '#', 'ti-settings'),
-    new NavigationItem('nav-userRoles','User Roles','/components/userRoles','ti-user',(dom)=> userCategory(dom))
+    new NavigationItem('nav-userRoles','User Roles','/components/userRoles','ti-user',(dom)=> userCategoryload(dom))
 );
 // on main page we need to load dashboard data
 loadDashboard();

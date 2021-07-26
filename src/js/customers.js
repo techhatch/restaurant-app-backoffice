@@ -1,7 +1,7 @@
 import App from "./App.js";
 import Customer from './models/customer.js';
 import { Globals } from './constants.js';
-import { FE, ModelRow,ChangeTrigger } from "./fe.js";
+import { FE, ModelRow, ChangeTrigger } from "./fe.js";
 import { MemCache } from "./memcache.js";
 
 const globals = new Globals();
@@ -11,14 +11,17 @@ export function custLoad(domElement) {
 
     const custRow = domElement.querySelector('table#custTable');
     const templateRow = document.querySelector('template#custRow');
-    
+
     db.renderToList((id, model, change) => {
         FE.renderToTable(new ChangeTrigger(id, model, change), custRow, templateRow);
     });
     const addButton = custRow.querySelector('th > a.btn-action');
     addButton.addEventListener('click', (ev) => {
         const form = document.getElementById('custManagement');
+        let model = new Customer();
         resetForm(form);
+        model.attachForm(form);
+        MemCache.set('cust_placeholder', model);
         form.querySelector('.control-grp.actions').style.display = "block";
 
     });
@@ -38,32 +41,34 @@ export function custLoad(domElement) {
 async function onSubmit(e) {
     e.preventDefault();
     const form = e.target;
-    var model = MemCache.get(form.dataset.id);
-    var modelid = form.dataset.id;
-    if (model && modelid) {
-        model.update();
-        MemCache.set(form.dataset.id, model);
+    const modelid = form.dataset.id;
+    let model;
+    if (modelid) {
+        model = MemCache.get(modelid);
     }
     else {
-        model = new Customer(form);
+        model = MemCache.get('cust_placeholder');
     }
-
+    if (!model) {
+        model = new Customer();
+    }
     if (model.userName && model.password) {
         var doc = await db.query('userName', '==', model.userName);
         if (doc.size == 0 && !modelid) {
-            await db.add(model.toObject())
+            await db.add(model.toPlainObject())
             // .then(function() {
             console.log("Record added."); // Record will be added through our renderToList
             // });
-
+            MemCache.set(modelid, modelid);
         }
         else {
-            await db.update(modelid, model.toObject());
+            await db.update(modelid, model.toPlainObject());
             console.log("Record updated.");
         }
 
         resetForm(form);
     }
+    model.deattachForm();
     return false;
 }
 /**
@@ -88,6 +93,7 @@ function resetForm(form) {
     password.value = "";
     form.querySelector('.control-grp.actions').style.display = "none";
     form.dataset.id = "";
+
 }
 
 //Edit User 
@@ -104,6 +110,7 @@ export function editCustomer(ele) {
     const model = tr.dataset;
     form.elements["modelId"].value = form.dataset.id = tr.dataset.id;
     let cust = new Customer(form, model);
+    cust.attachForm(form);
     MemCache.set(cust.documentId, cust);
 
 }
