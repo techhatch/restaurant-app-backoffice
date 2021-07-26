@@ -1,19 +1,13 @@
 import App from "./App.js";
-import { createRow, updateRow, deleteRow, convertToLocalDateTime } from "./Util.js";
+import { ChangeTrigger, FE, ModelRow } from "./fe.js";
+const db = App.createDb('TableReservation');
 
-export function reservationLoad() {
-
-    const db = App.getdb('TableReservation');
+export function reservationLoad(domElement) {
+    const table = domElement.querySelector('table#reservationTable');
+    const templateRow = document.querySelector('template#reservationRow');
+     
     db.renderToList((id, model, change) => {
-        if (model) {      
-            if (change == 'added') {
-                createRow('#reservationRow', id, model);
-            } else if (change == 'modified') {
-                updateRow(id, model);
-            } else {
-                deleteRow(id);
-            }
-        }
+        FE.renderToTable(new ChangeTrigger(id,model,change),table,templateRow);
     });
 
 
@@ -63,7 +57,6 @@ export function editReservation(selector){
 
 // delete
 export function deleteReservation(ele){
-    const db = App.getdb('TableReservation');
     let tr = ele.parentElement.parentElement;
     if(db.remove(tr.dataset.id))
         tr.remove();

@@ -2,7 +2,7 @@
 import App from "./App.js";
 import { createRow, updateRow, deleteRow } from "./Util.js";
 const form = document.getElementById("userCategory");
-const db = App.getdb("userCategory");
+const db = App.createDb("userCategory");
 
 (function LoadingFuncion() {
   document.addEventListener("readystatechange", function (e) {

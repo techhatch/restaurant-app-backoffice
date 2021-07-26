@@ -1,0 +1,70 @@
+<div class="customer-container">
+    <div class="custHeader">
+        <form novalidate id="custManagement">
+
+            <div class="control-grp">
+                <label>First Name</label>
+                <input type="text" name="firstName" id="firstName" data-field="firstName" readonly/>
+            </div>
+            <div class="control-grp">
+                <label>Last Name</label>
+                <input type="text" name="lastName" id="lastName" data-field="lastName" readonly/>
+            </div>
+            <div class="control-grp">
+                <label>User Name</label>
+                <input type="text" name="userName" id="userName" data-field="userName" readonly/>
+            </div>
+            <div class="control-grp">
+                <label>Password</label>
+                <input type="password" name="password" id="password"  data-field="password" data-type="securetext"  readonly/> <i class="fa fa-eye" aria-hidden="true" onclick="show_Password();"></i>
+            </div>
+             <div class="control-grp" id="statusgroup">
+                <label>Status</label>
+                <input type="checkbox" name="status" id="status" checked data-field="status"  readonly>
+            </div>
+            <input type="hidden" name="modelId" id="modelId" data-field="documentId" /> 
+            <div class="control-grp actions" style="display: none;">
+                <input type="submit" class="btn btn-primary" value="Save" />
+                <input type="reset"  class="btn btn-secondary" value="Cancel" />
+            </div>
+            
+        </form>
+    </div> 
+    <div class="customer-table">
+        <table id="custTable">
+            <caption>
+                Customers
+            </caption>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Name</th>
+                    <th>Password</th>
+                    <th>Status</th>
+                    <th><a href="javascript:void(0);" class="btn-action">
+                        <i class="fas fa-plus" ></i>
+                    </a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- existing data could optionally be included here -->
+            </tbody>
+        </table>
+
+        <template id="custRow">
+            <tr>
+                <td data-id="firstName"></td>
+                <td data-id="lastName"></td>
+                <td data-id="userName"></td>
+                <td data-id="password" data-type="securetext"></td>
+                <td data-id="status" data-type="boolean"></td>
+                <td data-type="element">
+                    <a href="javascript:void(0);" onclick="editCust(this);" class="btn-action">
+                        <i class="fas fa-edit" ></i>
+                    </a>
+                </td>
+            </tr>
+        </template>
+    </div>
+</div>

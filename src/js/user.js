@@ -1,20 +1,19 @@
 import App from "./App.js";
-import { createRow, updateRow, deleteRow } from "./Util.js";
+import { FE, ModelRow,ChangeTrigger } from "./fe.js";
 
-export function userLoad() {
+const db = App.createDb('User');
+
+export function userLoad(domElement) {
     
-    const db = App.getdb('User');
+    const table = domElement.querySelector('table#userTable');
+    const templateRow = document.querySelector('template#userRow');
+     
+   
     db.renderToList((id, model, change) => {
-        if (model) {
-            if (change == 'added') {
-                createRow('#userRow', id, model);
-            } else if (change == 'modified') {
-                updateRow(id, model);
-            } else {
-                deleteRow(id);
-            }
-        }
+        FE.renderToTable(new ChangeTrigger(id, model, change), table, templateRow);
     });
+
+ 
 
     document.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -106,7 +105,7 @@ export function edit_User(ele){
 
 // delete user
 export function deleteUser(ele){
-    const db = App.getdb('User');
+    const db = App.createDb('User');
     let tr = ele.parentElement.parentElement;
     if(db.remove(tr.dataset.id))
         tr.remove();
