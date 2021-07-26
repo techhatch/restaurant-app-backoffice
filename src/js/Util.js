@@ -70,31 +70,3 @@ export function deleteRow(id) {
 
 }
 
-export function convertToLocalDateTime(datee) {
-    var year = datee.getFullYear();
-    var month = datee.getMonth() + 1;
-    var day = datee.getDate();
-    var hour = datee.getHours();
-    var minute = datee.getMinutes();
-
-    if (minute < 10)
-        minute = "0" + minute;
-
-    if (hour < 10)
-        hour = "0" + hour;
-
-    if (day < 10)
-        day = "0" + day;
-
-    if (month < 10)
-        month = "0" + month;
-
-    var time = "";
-
-    if (datee) {
-        time = hour + ":" + minute;
-        datee = year + "-" + month + "-" + day;
-    }
-
-    return datee + " @ " + time;
-}

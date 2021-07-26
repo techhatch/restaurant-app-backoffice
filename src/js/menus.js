@@ -1,20 +1,15 @@
 import App from "./App.js";
+import { FE, ModelRow,ChangeTrigger } from "./fe.js";
+const db = App.createDb('Menu');
 
-import { createRow, updateRow, deleteRow } from "./Util.js";
+export function menuLoad(domElement) {
 
-export function menuLoad() {
-
-    const db = App.getdb('Menu');
+    const table = domElement.querySelector('table#menuTable');
+    const templateRow = document.querySelector('template#menuRow');
+     
+   
     db.renderToList((id, model, change) => {
-        if (model) {
-            if (change == 'added') {
-                createRow('#menuRow', id, model);
-            } else if (change == 'modified') {
-                updateRow(id, model);
-            } else {
-                deleteRow(id);
-            }
-        }
+        FE.renderToTable(new ChangeTrigger(id, model, change), table, templateRow);
     });
 
     document.addEventListener('submit', async function(e) {
@@ -67,7 +62,7 @@ export function editMenu(selector){
 
 // delete menu
 export function deleteMenu(selector){
-    const db = App.getdb('Menu');
+    const db = App.createDb('Menu');
     let tr = selector.parentElement.parentElement;
     if(db.remove(tr.dataset.id))
         tr.remove();

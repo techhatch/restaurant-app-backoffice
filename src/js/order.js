@@ -1,19 +1,13 @@
 import App from "./App.js";
-import { createRow, updateRow, deleteRow,convertToLocalDateTime } from "./Util.js";
+import { FE, ModelRow,ChangeTrigger } from "./fe.js";
+ 
+ const db = App.createDb('Orders');
+export function ordersLoad(domElement) {
+    const menuTable = domElement.querySelector('table#ordersTable');
+    const templateRow = document.querySelector('template#ordersRow');
 
-export function ordersLoad() {
-    const db = App.createDb('Orders');
     db.renderToList((id, model, change) => {
-        if (model) {
-            model.date = convertToLocalDateTime(new Date(model.date.seconds*1000));
-            if (change == 'added') {
-                createRow('#ordersRow', id, model);
-            } else if (change == 'modified') {
-                updateRow(id, model,'#ordersRow');
-            } else {
-                deleteRow(id);
-            }
-        }
+        FE.renderToTable(new ChangeTrigger(id, model, change), table, templateRow);
     });
 };
 
@@ -21,7 +15,6 @@ export function ordersLoad() {
 export async function OrderStatusChange(selector){
     let tr = selector.parentElement.parentElement;
     let status = selector.value;
-    const db = App.createDb('Orders');
     db.update(tr.dataset.id,{"status":status});
 
 }

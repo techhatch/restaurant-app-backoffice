@@ -94,7 +94,7 @@ class Customer {
         obj['lastName'] = this.lastName;
         obj['userName'] = this.userName;
         obj['status'] = this.status;
-        obj['password'] = this.#decrypt(this.password);
+        obj['password'] = this.password; //this.#decrypt(this.password);
         return obj;
     }
     update() {

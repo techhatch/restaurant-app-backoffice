@@ -9,9 +9,6 @@ export class Navigation {
      * @param {Function} navigationHandler Bind anchor click function to load component content
      */
     constructor(selector, navigationHandler) {
-        /**
-         * @property {HTMLElement} container Container Element
-         */
         this.container = document.querySelector(selector);
         this.navigationHandler = navigationHandler;
     }

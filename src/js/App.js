@@ -35,7 +35,7 @@ class App {
             getDocumentInQuery(query, render) {
                 query.onSnapshot((snapshot) => {
                     if (!snapshot.size) {
-                        return render();
+                      return;
                     }
                     snapshot.docChanges().forEach((change) => {
                         render(change.doc.id, change.doc.data(), change.type);

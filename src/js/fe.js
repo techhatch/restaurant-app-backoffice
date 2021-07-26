@@ -8,7 +8,27 @@ class FrontendDOMHelper {
         this.rootElement = document.querySelector(selector);
     }
 
-
+    /**
+     * Render table
+     * @param {ChangeTrigger} trigger Change Trigger
+     * @param {HTMLTableElement} table Table
+     * @param {HTMLTemplateElement} template Template element
+     */
+    renderToTable(trigger, table, template) {
+        const tbody = table.querySelector('tbody');
+        if (trigger) {
+            const data = new ModelRow(trigger.id, trigger.model);
+            const change = trigger.change;
+            if (change == 'added') {
+                FE.createRow(tbody, template, data);
+            } else if (change == 'modified') {
+                FE.updateRow(data, tbody);
+                // updateRow(id, model);
+            } else {
+                FE.deleteRow(id);
+            }
+        }
+    }
     /**
      * Create Html Element and attach to root or owner
      * @param {string|ENode} node string or Element node
@@ -18,7 +38,7 @@ class FrontendDOMHelper {
     createElement(node, owner) {
         let el;
         if (typeof node === string) {
-            el = document.createTextNode(node);
+            el = document.createTextNode(node); // <span>ABC</span>
         }
         else {
             el = Object.assign(document.createElement(node.tagName), node.Props);
@@ -126,9 +146,44 @@ class FrontendDOMHelper {
         }
     }
 }
+export function convertToLocalDateTime(datee) {
+    var year = datee.getFullYear();
+    var month = datee.getMonth() + 1;
+    var day = datee.getDate();
+    var hour = datee.getHours();
+    var minute = datee.getMinutes();
+
+    if (minute < 10)
+        minute = "0" + minute;
+
+    if (hour < 10)
+        hour = "0" + hour;
+
+    if (day < 10)
+        day = "0" + day;
+
+    if (month < 10)
+        month = "0" + month;
+
+    var time = "";
+
+    if (datee) {
+        time = hour + ":" + minute;
+        datee = year + "-" + month + "-" + day;
+    }
+
+    return datee + " @ " + time;
+}
 
 export const FE = new FrontendDOMHelper(null);
 
+export class ChangeTrigger {
+    constructor(id, model, change) {
+        this.id = id;
+        this.model = model;
+        this.change = change;
+    }
+}
 export class ENode {
 
     /**
@@ -153,5 +208,10 @@ export class ModelRow {
     constructor(id, data) {
         this.id = id;
         this.data = data;
+        Object.keys(data).filter(k => {
+            if (k === "date") {
+                data.date = convertToLocalDateTime( new Date(data.date));
+            }
+        });
     }
 }

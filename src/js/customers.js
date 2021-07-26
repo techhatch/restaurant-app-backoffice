@@ -1,9 +1,7 @@
 import App from "./App.js";
 import Customer from './models/customer.js';
 import { Globals } from './constants.js';
-
-import { createRow, updateRow, deleteRow } from "./Util.js";
-import { FE, ModelRow } from "./fe.js";
+import { FE, ModelRow,ChangeTrigger } from "./fe.js";
 import { MemCache } from "./memcache.js";
 
 const globals = new Globals();
@@ -13,29 +11,10 @@ export function custLoad(domElement) {
 
     const custRow = domElement.querySelector('table#custTable');
     const templateRow = document.querySelector('template#custRow');
-    const tbody = custRow.querySelector('tbody');
-    /**
-     * 
-     * @param {string} id Firestore document id
-     * @param {Customer} model Customer instance
-     * @param {string} change Enum add | modified | deleted
-     */
-    function renderToList(id, model, change) {
-        if (model) {
-            var data = new ModelRow(id, model);
-            if (change == 'added') {
-                FE.createRow(tbody, templateRow, data);
-            } else if (change == 'modified') {
-                FE.updateRow(data, tbody);
-                // updateRow(id, model);
-            } else {
-                FE.updateRow(id);
-            }
-        }
-    }
-    const _renderToList = db.renderToList.bind(db, renderToList);
-
-    _renderToList();
+    
+    db.renderToList((id, model, change) => {
+        FE.renderToTable(new ChangeTrigger(id, model, change), custRow, templateRow);
+    });
     const addButton = custRow.querySelector('th > a.btn-action');
     addButton.addEventListener('click', (ev) => {
         const form = document.getElementById('custManagement');
@@ -63,7 +42,7 @@ async function onSubmit(e) {
     var modelid = form.dataset.id;
     if (model && modelid) {
         model.update();
-        MemCache.set(form.dataset.id,model);
+        MemCache.set(form.dataset.id, model);
     }
     else {
         model = new Customer(form);
