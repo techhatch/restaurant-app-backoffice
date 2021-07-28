@@ -1,5 +1,5 @@
 import App from "./App.js";
-import { ChangeTrigger, FE, ModelRow } from "./fe.js";
+import { ChangeTrigger, FE } from "./fe.js";
 const db = App.createDb('TableReservation');
 
 export function reservationLoad(domElement) {

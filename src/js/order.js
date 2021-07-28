@@ -1,13 +1,13 @@
 import App from "./App.js";
-import { FE, ModelRow,ChangeTrigger } from "./fe.js";
+import { FE,ChangeTrigger } from "./fe.js";
  
  const db = App.createDb('Orders');
 export function ordersLoad(domElement) {
-    const menuTable = domElement.querySelector('table#ordersTable');
+    const orderTable = domElement.querySelector('table#ordersTable');
     const templateRow = document.querySelector('template#ordersRow');
 
     db.renderToList((id, model, change) => {
-        FE.renderToTable(new ChangeTrigger(id, model, change), table, templateRow);
+        FE.renderToTable(new ChangeTrigger(id, model, change), orderTable, templateRow);
     });
 };
 

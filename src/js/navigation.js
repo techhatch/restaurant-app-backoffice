@@ -15,10 +15,9 @@ export class Navigation {
 
     /**
      * Render
-     * @param {HTMLElement} nav Navigation
      * @param {Array<NavigationItem>} thisArgArray Navigation Items
      */
-    render(nav, ...thisArgArray) {
+    render( ...thisArgArray) {
         const ul = document.createElement('ul');
         thisArgArray.forEach(item => {
             const li = document.createElement('li');
@@ -26,7 +25,7 @@ export class Navigation {
             li.appendChild(anchor);
             ul.appendChild(li);
         });
-        nav.appendChild(ul);
+        this.container.appendChild(ul);
     }
 }
 

@@ -210,7 +210,7 @@ export class ModelRow {
         this.data = data;
         Object.keys(data).filter(k => {
             if (k === "date") {
-                data.date = convertToLocalDateTime( new Date(data.date));
+                data.date = convertToLocalDateTime( new Date(data.date.seconds*1000));
             }
         });
     }

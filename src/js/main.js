@@ -8,14 +8,12 @@ import { editReservation, reservationLoad, deleteReservation } from "./tableRese
 import { NavigationItem, Navigation } from "./navigation.js";
 import {onloadData   as userCategoryload  } from "./userCategory.js";
 
-const nav = document.querySelector('.sidebar-menu > nav');
 const container = document.querySelector('#container');
 window.navBar = new Navigation('.sidebar-menu > nav', (dom) => {
     container.innerHTML = '';
     container.appendChild(dom);
 });
 window.navBar.render(
-    nav,
     new NavigationItem('nav-orders', 'Orders', '/components/orders.html', 'ti-home', (dom) => ordersLoad(dom)),
     new NavigationItem('nav-customers', 'Customers', '/components/customer.html', 'ti-face-smile', (dom) => custLoad(dom)),
     new NavigationItem('nav-table-reservation', 'Table reservation', '/components/table-reservation.html', 'ti-notepad', (dom) => reservationLoad(dom)),

@@ -1,10 +1,10 @@
 import App from "./App.js";
 import Customer from './models/customer.js';
-import { Globals } from './constants.js';
+import { globals } from './constants.js';
 import { FE, ModelRow, ChangeTrigger } from "./fe.js";
 import { MemCache } from "./memcache.js";
 
-const globals = new Globals();
+// const globals = new Globals();
 const db = App.createDb(globals.Collections.customers);
 
 export function custLoad(domElement) {
